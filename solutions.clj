@@ -1,5 +1,5 @@
 
-; Solutions for 4clojure problems from Living Clojure book
+; Solutions to 4clojure problems from Living Clojure book
 ; http://www.4clojure.com/
 
 ; https://github.com/tantaman/4clojure-solutions
