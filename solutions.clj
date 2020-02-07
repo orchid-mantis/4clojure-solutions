@@ -1,4 +1,3 @@
-
 ; Solutions to 4clojure problems from Living Clojure book
 ; http://www.4clojure.com/
 
@@ -10,6 +9,8 @@
                                        (fn ~probArgs (and true ~@probBody)) (list ~@solList)))))))
 
 (def _)
+
+; ===========| Day 3 |===========|
 
 ; http://www.4clojure.com/problem/37
 ; Regex patterns are supported with a special reader macro.
@@ -87,3 +88,5 @@
           (= _ (for [[x y] (partition 2 (range 20))]
                   (+ x y))))
          '(1 5 9 13 17 21 25 29 33 37))
+
+; ===========| Day 4 |===========|
