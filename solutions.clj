@@ -99,3 +99,14 @@
           (= (_ ["a" "b" "c"]) "b")
           (= (_ [[1 2] [3 4]]) [1 2]))
          #(second (reverse %)))
+
+; http://www.4clojure.com/problem/24
+; Write a function which returns the sum of a sequence of numbers. 
+(problem [_]
+         (list
+          (= (_ [1 2 3]) 6)
+          (= (_ (list 0 -2 5 5)) 8)
+          (= (_ #{4 2 1}) 7)
+          (= (_ '(0 0 -1)) -1)
+          (= (_ '(1 10 3)) 14))
+         #(reduce + %))
