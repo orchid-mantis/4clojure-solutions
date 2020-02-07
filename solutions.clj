@@ -110,3 +110,13 @@
           (= (_ '(0 0 -1)) -1)
           (= (_ '(1 10 3)) 14))
          #(reduce + %))
+
+; http://www.4clojure.com/problem/25
+; Write a function which returns only the odd numbers from a sequence.
+(problem [_]
+         (list
+          (= (_ #{1 2 3 4 5}) '(1 3 5))
+          (= (_ [4 2 1 6]) '(1))
+          (= (_ [2 2 4 6]) '())
+          (= (_ [1 1 1 3]) '(1 1 1 3)))
+         #(filter odd? %))
