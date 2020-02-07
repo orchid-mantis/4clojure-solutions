@@ -90,3 +90,12 @@
          '(1 5 9 13 17 21 25 29 33 37))
 
 ; ===========| Day 4 |===========|
+
+; http://www.4clojure.com/problem/20
+; Write a function which returns the second to last element from a sequence. 
+(problem [_]
+         (list
+          (= (_ (list 1 2 3 4 5)) 4)
+          (= (_ ["a" "b" "c"]) "b")
+          (= (_ [[1 2] [3 4]]) [1 2]))
+         #(second (reverse %)))
