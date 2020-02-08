@@ -132,3 +132,13 @@
           (true? (_ '(1 1 3 3 1 1)))
           (false? (_ '(:a :b :c))))
          #(= (apply str %) (apply str (reverse %))))
+
+; http://www.4clojure.com/problem/32
+; Write a function which duplicates each element of a sequence.
+(problem [_]
+         (list
+          (= (_ [1 2 3]) '(1 1 2 2 3 3))
+          (= (_ [:a :a :b :b]) '(:a :a :a :a :b :b :b :b))
+          (= (_ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
+          (= (_ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4])))
+         #(apply concat (map list % %)))
