@@ -120,3 +120,15 @@
           (= (_ [2 2 4 6]) '())
           (= (_ [1 1 1 3]) '(1 1 1 3)))
          #(filter odd? %))
+
+; http://www.4clojure.com/problem/27
+; Write a function which returns true if the given sequence is a palindrome.
+; Hint: "racecar" does not equal '(\r \a \c \e \c \a \r)
+(problem [_]
+         (list
+          (false? (_ '(1 2 3 4 5)))
+          (true? (_ "racecar"))
+          (true? (_ [:foo :bar :foo]))
+          (true? (_ '(1 1 3 3 1 1)))
+          (false? (_ '(:a :b :c))))
+         #(= (apply str %) (apply str (reverse %))))
