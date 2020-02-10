@@ -142,3 +142,15 @@
           (= (_ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4]))
           (= (_ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4])))
          #(apply concat (map list % %)))
+
+; ===========| Day 5 |===========|
+; http://www.4clojure.com/problem/30
+; Write a function which removes consecutive duplicates from a sequence.
+(problem [_]
+         (list
+          (= (apply str (_ "Leeeeeerrroyyy")) "Leroy")
+          (= (_ [1 1 2 3 3 2 2 3]) '(1 2 3 2 3))
+          (= (_ [[1 2] [1 2] [3 4] [1 2]]) '([1 2] [3 4] [1 2])))
+         (fn [coll] (->> coll
+                         (partition-by identity)
+                         (map #(first %)))))
