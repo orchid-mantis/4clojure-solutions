@@ -163,3 +163,32 @@
           (= (_ [:a :a :b :b :c]) '((:a :a) (:b :b) (:c)))
           (= (_ [:a :a :b :b :c]) '((:a :a) (:b :b) (:c))))
          #(partition-by identity %))
+
+; http://www.4clojure.com/problem/41
+; Write a function which drops every Nth item from a sequence.
+(problem [_]
+         (list
+          (= (_ [1 2 3 4 5 6 7 8] 3) [1 2 4 5 7 8])
+          (= (_ [:a :b :c :d :e :f] 2) [:a :c :e])
+          (= (_ [1 2 3 4 5 6] 4) [1 2 3 5 6]))
+         ; solution 1
+         (fn [coll n]
+           (let [collSize (count coll)
+                 collZip (zipmap (range 1 (inc collSize)) coll)]
+             (->> collZip
+                  (filter (fn [pair]
+                            (let [key (first pair)]
+                              (not= (mod key n) 0))))
+                  (map #(second %))
+                  (into [])
+                  )))
+         ; solution 2
+         (fn [coll n]
+           (let [collSize (count coll)]
+             (vec (for [index (range collSize)
+                        :let [x (nth coll index)
+                              i (inc index)]
+                        :when (#(not= (mod i n) 0))]
+                    x))))
+         ; solution 3
+         #(apply concat (partition-all (dec %2) %2 %)))
