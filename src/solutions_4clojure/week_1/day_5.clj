@@ -3,7 +3,7 @@
 ;
 ; Day 5
 
-(ns solutions-4clojure.problems
+(ns solutions-4clojure.week-1.day-5
   (:require [solutions-4clojure.helper :refer [problem _]]))
 
 ; http://www.4clojure.com/problem/30
