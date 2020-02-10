@@ -10,7 +10,7 @@
 
 (def _)
 
-; ===========| Day 3 |===========|
+; ===========| Day 3 |===========
 
 ; http://www.4clojure.com/problem/37
 ; Regex patterns are supported with a special reader macro.
@@ -89,7 +89,7 @@
                   (+ x y))))
          '(1 5 9 13 17 21 25 29 33 37))
 
-; ===========| Day 4 |===========|
+; ===========| Day 4 |===========
 
 ; http://www.4clojure.com/problem/20
 ; Write a function which returns the second to last element from a sequence. 
@@ -143,7 +143,7 @@
           (= (_ [[1 2] [3 4]]) '([1 2] [1 2] [3 4] [3 4])))
          #(apply concat (map list % %)))
 
-; ===========| Day 5 |===========|
+; ===========| Day 5 |===========
 ; http://www.4clojure.com/problem/30
 ; Write a function which removes consecutive duplicates from a sequence.
 (problem [_]
@@ -154,3 +154,12 @@
          (fn [coll] (->> coll
                          (partition-by identity)
                          (map #(first %)))))
+
+; http://www.4clojure.com/problem/31
+; Write a function which packs consecutive duplicates into sub-lists.
+(problem [_]
+         (list
+          (= (_ [1 1 2 1 1 1 3 3]) '((1 1) (2) (1 1 1) (3 3)))
+          (= (_ [:a :a :b :b :c]) '((:a :a) (:b :b) (:c)))
+          (= (_ [:a :a :b :b :c]) '((:a :a) (:b :b) (:c))))
+         #(partition-by identity %))
