@@ -192,3 +192,10 @@
                     x))))
          ; solution 3
          #(apply concat (partition-all (dec %2) %2 %)))
+
+; http://www.4clojure.com/problem/45
+; The iterate function can be used to produce an infinite lazy sequence.
+(problem [_]
+         (list
+          (= _ (take 5 (iterate #(+ 3 %) 1))))
+         [1 4 7 10 13])
