@@ -199,3 +199,15 @@
          (list
           (= _ (take 5 (iterate #(+ 3 %) 1))))
          [1 4 7 10 13])
+
+; http://www.4clojure.com/problem/33
+; Write a function which replicates each element of a sequence a variable
+; number of times.
+(problem [_]
+         (list
+          (= (_ [1 2 3] 2) '(1 1 2 2 3 3))
+          (= (_ [:a :b] 4) '(:a :a :a :a :b :b :b :b))
+          (= (_ [4 5 6] 1) '(4 5 6))
+          (= (_ [[1 2] [3 4]] 2) '([1 2] [1 2] [3 4] [3 4]))
+          (= (_ [44 33] 2) [44 44 33 33]))
+         #(apply concat (map (fn [x] (repeat %2 x)) %)))
