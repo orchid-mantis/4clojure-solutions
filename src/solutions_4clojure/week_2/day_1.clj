@@ -24,3 +24,20 @@
                                       (recur (dec len) (conj result (+ x y))))))))
          ; solution 2
          #(map first (take % (iterate (fn [[a b]] [b (+ a b)]) [1 1]))))
+
+; http://www.4clojure.com/problem/29
+; Write a function which takes a string and returns a new string containing
+; only the capital letters.
+(problem [_]
+         (list
+          (= (_ "HeLlO, WoRlD!") "HLOWRD")
+          (empty? (_ "nothing"))
+          (= (_ "$#A(*&987Zf") "AZ"))
+         ; solution 1
+         #(apply str (re-seq #"[A-Z]+" %))
+         ; solution 2
+         #(let [input %
+                upper? (fn [intCh]
+                         (and (>= intCh (int \A)) (<= intCh (int \Z))))]
+            (apply str (filter (fn [ch]
+                                 (when (upper? (int ch)) ch)) input))))
