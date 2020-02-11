@@ -8,3 +8,4 @@
 ; Week 2
 (require '[solutions-4clojure.week-2.day-1])
 (require '[solutions-4clojure.week-2.day-2])
+(require '[solutions-4clojure.week-2.day-3])
