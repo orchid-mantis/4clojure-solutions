@@ -51,3 +51,13 @@
           (= _ (some #{2 7 6} [5 6 7 8]))
           (= _ (some #(when (even? %) %) [5 6 7 8])))
          6)
+
+; http://www.4clojure.com/problem/42
+; Write a function which calculates factorials.
+(problem [_]
+         (list
+          (= (_ 1) 1)
+          (= (_ 3) 6)
+          (= (_ 5) 120)
+          (= (_ 8) 40320))
+         #(reduce * (range 1 (inc %))))
