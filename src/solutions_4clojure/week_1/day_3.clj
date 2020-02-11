@@ -1,7 +1,7 @@
 ; Solutions to 4clojure problems from Living Clojure book
 ; http://www.4clojure.com/
 ;
-; Day 3
+; Week 1 Day 3
 
 (ns solutions-4clojure.week-1.day-3
   (:require [solutions-4clojure.helper :refer [problem _]]))
