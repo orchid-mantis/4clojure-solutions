@@ -12,3 +12,20 @@
          (list
           (= [1 2 [3 4 5] [1 2 3 4 5]] (let [[a b & c :as d] _] [a b c d])))
          [1 2 3 4 5])
+
+; http://www.4clojure.com/problem/83
+; Write a function which takes a variable number of booleans.
+; Your function should return true if some of the parameters are true,
+; but not all of the parameters are true. Otherwise your function should return false.
+(problem [_]
+         (list
+          (= false (_ false false))
+          (= true (_ true false))
+          (= false (_ true))
+          (= true (_ false true false))
+          (= false (_ true true true))
+          (= true (_ true true true false)))
+         (fn [& bools]
+           (let [someTrue (not (nil? (some true? bools)))
+                 allTrue (every? true? bools)]
+             (and someTrue (not allTrue)))))
