@@ -23,4 +23,9 @@
           (= 256 ((_ 2) 16) ((_ 8) 2))
           (= [1 8 27 64] (map (_ 3) [1 2 3 4]))
           (= [1 2 4 8 16] (map #((_ %) 2) [0 1 2 3 4])))
-         (fn [n] (comp (partial reduce *) (partial repeat n))))
+         ; solution 1
+         (fn [n] (comp (partial reduce *) (partial repeat n)))
+         ; solution 2
+         (fn [x]
+           (fn [y]
+             (apply * (take x (repeat y))))))
