@@ -29,3 +29,18 @@
            (let [someTrue (not (nil? (some true? bools)))
                  allTrue (every? true? bools)]
              (and someTrue (not allTrue)))))
+
+; http://www.4clojure.com/problem/66
+; Given two integers, write a function which returns the greatest common divisor.
+(problem [_]
+         (list
+          (= (_ 2 4) 2)
+          (= (_ 10 5) 5)
+          (= (_ 5 7) 1)
+          (= (_ 1023 858) 33))
+         (fn [x y]
+           (loop [u x
+                  w y]
+             (if (= w 0)
+               u
+               (recur w (mod u w))))))
