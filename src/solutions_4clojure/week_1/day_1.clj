@@ -40,7 +40,7 @@
 ; http://www.4clojure.com/problem/6
 ; Vectors can be constructed several ways. You can compare them with lists.
 ;
-;Note: the brackets [] surrounding the blanks _ are part of the test case.
+; Note: the brackets [] surrounding the blanks _ are part of the test case.
 (problem [_]
          (list
           ; inlined solution
