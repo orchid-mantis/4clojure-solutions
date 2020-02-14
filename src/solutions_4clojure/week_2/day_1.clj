@@ -66,5 +66,6 @@
 ; Let bindings and function parameter lists support destructuring.
 (problem [_]
          (list
-          (= [2 4] (let [[a b c d e] [0 1 2 3 4]] _)))
-         [2 4]) ; solution [c e] can't be used in macro
+          ; inlined solution
+          (= [2 4] (let [[a b c d e] [0 1 2 3 4]] [c e])))
+         '()) ; solution [c e] can't be used in macro
