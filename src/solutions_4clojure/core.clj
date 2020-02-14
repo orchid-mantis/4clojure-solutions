@@ -10,3 +10,4 @@
 (require '[solutions-4clojure.week-2.day-2])
 (require '[solutions-4clojure.week-2.day-3])
 (require '[solutions-4clojure.week-2.day-4])
+(require '[solutions-4clojure.week-2.day-5])
