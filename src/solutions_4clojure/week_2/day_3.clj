@@ -29,3 +29,20 @@
          (fn [x]
            (fn [y]
              (apply * (take x (repeat y))))))
+
+; http://www.4clojure.com/problem/90
+; Write a function which calculates the Cartesian product of two sets.
+(problem [_]
+         (list
+          (= (_ #{"ace" "king" "queen"} #{"♠" "♥" "♦" "♣"})
+             #{["ace"   "♠"] ["ace"   "♥"] ["ace"   "♦"] ["ace"   "♣"]
+               ["king"  "♠"] ["king"  "♥"] ["king"  "♦"] ["king"  "♣"]
+               ["queen" "♠"] ["queen" "♥"] ["queen" "♦"] ["queen" "♣"]})
+          (= (_ #{1 2 3} #{4 5})
+             #{[1 4] [2 4] [3 4] [1 5] [2 5] [3 5]})
+          (= 300 (count (_ (into #{} (range 10))
+                            (into #{} (range 30))))))
+         (fn [x y] (let [pairs (for [s1 x
+                                   s2 y]
+                               [s1 s2])]
+                     (into #{} pairs))))
