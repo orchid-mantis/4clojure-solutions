@@ -16,3 +16,4 @@
 
 ; Week 3
 (require '[solutions-4clojure.week-3.day-1])
+(require '[solutions-4clojure.week-3.day-2])
