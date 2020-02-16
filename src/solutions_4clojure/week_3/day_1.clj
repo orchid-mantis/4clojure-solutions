@@ -38,3 +38,30 @@
                          (not valid-node?) false
                          :else (and (binary-tree? lChild)
                                     (binary-tree? rChild)))))))
+
+; http://www.4clojure.com/problem/96
+; Let us define a binary tree as "symmetric" if the left half of the tree is
+; the mirror image of the right half of the tree. Write a predicate to
+; determine whether or not a given binary tree is symmetric.
+(problem [_]
+         (list
+          (= (_ '(:a (:b nil nil) (:b nil nil))) true)
+          (= (_ '(:a (:b nil nil) nil)) false)
+          (= (_ '(:a (:b nil nil) (:c nil nil))) false)
+          (= (_ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+                  [2 [3 nil [4 [6 nil nil] [5 nil nil]]] nil]])
+             true)
+          (= (_ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+                  [2 [3 nil [4 [5 nil nil] [6 nil nil]]] nil]])
+             false)
+          (= (_ [1 [2 nil [3 [4 [5 nil nil] [6 nil nil]] nil]]
+                  [2 [3 nil [4 [6 nil nil] nil]] nil]])
+             false)
+          )
+         (fn symmetric-binary-tree? [[_ [valueA leftA rightA]
+                           [valueB leftB rightB]]]
+           (and (= valueA valueB)
+                (or (= nil leftA rightA leftB rightB)
+                    (and
+                     (symmetric-binary-tree? [_ leftA rightB])
+                     (symmetric-binary-tree? [_ rightA leftB]))))))
