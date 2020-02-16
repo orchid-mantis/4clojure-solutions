@@ -26,18 +26,30 @@
              false)
           (= (_ '(:a nil ()))
              false))
-           (fn binary-tree? [tree]
-             (cond
-               (nil? tree) true ; leaf node
-               (not (coll? tree)) false
-               :else (let [[value lChild rChild & _ :as node] tree
-                           has-value? (or (number? value) (keyword? value))
-                           three-parts? (= (count node) 3)
-                           valid-node? (and has-value? three-parts?)]
-                       (cond
-                         (not valid-node?) false
-                         :else (and (binary-tree? lChild)
-                                    (binary-tree? rChild)))))))
+         ; solution 1
+         (fn binary-tree? [tree]
+           (cond
+             (nil? tree) true ; leaf node
+             (not (coll? tree)) false
+             :else (let [[value lChild rChild & _ :as node] tree
+                         has-value? (or (number? value) (keyword? value))
+                         three-parts? (= (count node) 3)
+                         valid-node? (and has-value? three-parts?)]
+                     (cond
+                       (not valid-node?) false
+                       :else (and (binary-tree? lChild)
+                                  (binary-tree? rChild))))))
+         ; solution 2
+         (fn binary-tree? [tree]
+           (and
+             (sequential? tree)
+             (= (count tree) 3)
+             (let [[_ left right] tree]
+                     (and
+                      (or (nil? left)
+                          (binary-tree? left))
+                      (or (nil? right)
+                          (binary-tree? right)))))))
 
 ; http://www.4clojure.com/problem/96
 ; Let us define a binary tree as "symmetric" if the left half of the tree is
